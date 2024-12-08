@@ -1,0 +1,16 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/the-hassan-shahzad/ros2_ws/install/gripper_description/lib/python3.10/site-packages",
+        "/home/the-hassan-shahzad/ros2_ws/install/g24_description/lib/python3.10/site-packages",
+        "/home/the-hassan-shahzad/ros2_ws/install/fura2a/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/the-hassan-shahzad/ros2_ws/install/gripper_description/lib/python3.10/site-packages",
+        "/home/the-hassan-shahzad/ros2_ws/install/g24_description/lib/python3.10/site-packages",
+        "/home/the-hassan-shahzad/ros2_ws/install/fura2a/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}

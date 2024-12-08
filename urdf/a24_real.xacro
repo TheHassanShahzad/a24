@@ -1,0 +1,212 @@
+<?xml version="1.0" ?>
+<robot name="a24" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find a24)/urdf/materials.xacro" />
+<xacro:include filename="$(find a24)/urdf/ros2_control_real.xacro" />
+
+
+<link name="base_footprint"/>
+
+<link name="base_link">
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 -1.5708"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/base_link_shell_unrotated.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 -1.5708"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/base_link_shell_unrotated.stl" scale="0.001 0.001 0.001"/>    
+    </geometry>
+  </collision>
+</link>
+
+
+<link name="right_motor_mount_1">
+  <visual>
+    <origin xyz="0.015 0.055 -0.003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/right_motor_mount_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.015 0.055 -0.003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/right_motor_mount_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_motor_mount__1">
+  <visual>
+    <origin xyz="0.015 -0.055 -0.003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/left_motor_mount__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.015 -0.055 -0.003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/left_motor_mount__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_motor_1">
+  <visual>
+    <origin xyz="0.037745 0.08667 -0.016373" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/right_motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.037745 0.08667 -0.016373" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/right_motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_motor_1">
+  <visual>
+    <origin xyz="0.037745 -0.08667 -0.016373" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/left_motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.037745 -0.08667 -0.016373" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/left_motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="caster_wheel_holder_1">
+  <visual>
+    <origin xyz="-0.07 -0.02 -0.003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/caster_wheel_holder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.07 -0.02 -0.003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/caster_wheel_holder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="caster_wheel_1">
+  <visual>
+    <origin xyz="-0.07 0.02 -0.0107" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/caster_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.07 0.02 -0.0107" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/caster_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <visual>
+    <origin xyz="0.029995 0.10817 -0.022796" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.029995 0.10817 -0.022796" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <visual>
+    <origin xyz="0.029995 -0.10817 -0.022796" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.029995 -0.10817 -0.022796" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="base_footprint_joint" type="fixed">
+  <parent link="base_footprint"/>
+  <child link="base_link"/>
+  <origin xyz="0.0 0.0 0.012" rpy="0.0 0.0 0.0"/>
+</joint>
+
+
+<joint name="Rigid 1" type="fixed">
+  <origin xyz="-0.015 -0.055 0.003" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_motor_mount_1"/>
+</joint>
+
+<joint name="Rigid 2" type="fixed">
+  <origin xyz="-0.015 0.055 0.003" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_motor_mount__1"/>
+</joint>
+
+<joint name="Rigid 3" type="fixed">
+  <origin xyz="-0.022745 -0.03167 0.013373" rpy="0 0 0"/>
+  <parent link="right_motor_mount_1"/>
+  <child link="right_motor_1"/>
+</joint>
+
+<joint name="Rigid 4" type="fixed">
+  <origin xyz="-0.022745 0.03167 0.013373" rpy="0 0 0"/>
+  <parent link="left_motor_mount__1"/>
+  <child link="left_motor_1"/>
+</joint>
+
+<joint name="Rigid 5" type="fixed">
+  <origin xyz="0.07 0.02 0.003" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="caster_wheel_holder_1"/>
+</joint>
+
+<joint name="Rigid 6" type="fixed">
+  <origin xyz="0.0 -0.04 0.0077" rpy="0 0 0"/>
+  <parent link="caster_wheel_holder_1"/>
+  <child link="caster_wheel_1"/>
+</joint>
+
+<joint name="right_wheel_joint" type="fixed">
+  <origin xyz="0.00775 -0.0215 0.006423" rpy="0 0 0"/>
+  <parent link="right_motor_1"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="left_wheel_joint" type="fixed">
+  <origin xyz="0.00775 0.0215 0.006423" rpy="0 0 0"/>
+  <parent link="left_motor_1"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+</robot>

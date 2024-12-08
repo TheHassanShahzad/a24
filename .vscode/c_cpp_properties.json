@@ -1,0 +1,26 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/the-hassan-shahzad/ros2_ws/install/diffdrive_arduino/include/**",
+        "/home/the-hassan-shahzad/ros2_ws/install/ar_hardware_interface/include/**",
+        "/opt/ros/humble/include/**",
+        "/home/the-hassan-shahzad/ros2_ws/src/ar4_ros_driver/ar_hardware_interface/include/**",
+        "/home/the-hassan-shahzad/ros2_ws/src/fura2a/include/**",
+        "/home/the-hassan-shahzad/ros2_ws/src/openbase2/include/**",
+        "include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

@@ -1,0 +1,259 @@
+<?xml version="1.0" ?>
+<robot name="a24" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find a24)/urdf/materials.xacro" />
+<xacro:include filename="$(find a24)/urdf/a24.gazebo" />
+<xacro:include filename="$(find a24)/urdf/lidar.xacro" />
+<xacro:include filename="$(find a24)/urdf/ros2_control_sim.xacro" />
+
+
+<link name="base_footprint"/>
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="3.882070344410716e-14 -0.0018708886856651943 4.98041867654471e-18" rpy="0 0 0"/>
+    <mass value="1.3439256828712636"/>
+    <inertia ixx="0.003108" iyy="0.003286" izz="0.006387" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 -1.5708"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/base_link_shell_unrotated.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 -1.5708"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/base_link_shell_unrotated.stl" scale="0.001 0.001 0.001"/>    
+    </geometry>
+  </collision>
+</link>
+
+
+<link name="right_motor_mount_1">
+  <inertial>
+    <origin xyz="-0.014944996173416932 -0.02118893156577261 0.010803327070871286" rpy="0 0 0"/>
+    <mass value="0.07515739960527416"/>
+    <inertia ixx="2.7e-05" iyy="2.3e-05" izz="2.5e-05" ixy="0.0" iyz="8e-06" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.015 0.055 -0.003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/right_motor_mount_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.015 0.055 -0.003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/right_motor_mount_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_motor_mount__1">
+  <inertial>
+    <origin xyz="-0.014944996053104665 0.021188931509783397 0.010803327206307344" rpy="0 0 0"/>
+    <mass value="0.07515739858034913"/>
+    <inertia ixx="2.7e-05" iyy="2.3e-05" izz="2.5e-05" ixy="-0.0" iyz="-8e-06" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.015 -0.055 -0.003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/left_motor_mount__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.015 -0.055 -0.003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/left_motor_mount__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_motor_1">
+  <inertial>
+    <origin xyz="0.00782234621764474 0.02470631278650679 0.013037522139860695" rpy="0 0 0"/>
+    <mass value="0.12625238499235122"/>
+    <inertia ixx="5.8e-05" iyy="2.2e-05" izz="5.8e-05" ixy="0.0" iyz="-2e-06" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.037745 0.08667 -0.016373" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/right_motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.037745 0.08667 -0.016373" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/right_motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_motor_1">
+  <inertial>
+    <origin xyz="0.007677653819879428 -0.02470631233039449 0.013037522088477773" rpy="0 0 0"/>
+    <mass value="0.12625238301486422"/>
+    <inertia ixx="5.8e-05" iyy="2.2e-05" izz="5.8e-05" ixy="0.0" iyz="2e-06" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.037745 -0.08667 -0.016373" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/left_motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.037745 -0.08667 -0.016373" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/left_motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="caster_wheel_holder_1">
+  <inertial>
+    <origin xyz="0.0005623091088872156 -0.020000000000004566 0.0038499999999999698" rpy="0 0 0"/>
+    <mass value="0.04743251072165832"/>
+    <inertia ixx="1.6e-05" iyy="5e-06" izz="2e-05" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.07 -0.02 -0.003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/caster_wheel_holder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.07 -0.02 -0.003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/caster_wheel_holder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="caster_wheel_1">
+  <inertial>
+    <origin xyz="1.511706658463563e-08 0.02000000133967177 -0.00704126714025486" rpy="0 0 0"/>
+    <mass value="0.07958649511227747"/>
+    <inertia ixx="7e-06" iyy="6e-06" izz="8e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.07 0.02 -0.0107" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/caster_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.07 0.02 -0.0107" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/caster_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="9.71445146547012e-17 -0.002588152992503548 1.634603031541726e-07" rpy="0 0 0"/>
+    <mass value="0.7502821394951055"/>
+    <inertia ixx="0.000288" iyy="0.00049" izz="0.000288" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.029995 0.10817 -0.022796" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.029995 0.10817 -0.022796" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="3.469446951953614e-18 0.00258815299250352 1.6346030306396697e-07" rpy="0 0 0"/>
+    <mass value="0.7502821394951048"/>
+    <inertia ixx="0.000288" iyy="0.00049" izz="0.000288" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.029995 -0.10817 -0.022796" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.029995 -0.10817 -0.022796" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find a24)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="base_footprint_joint" type="fixed">
+  <parent link="base_footprint"/>
+  <child link="base_link"/>
+  <origin xyz="0.0 0.0 0.012" rpy="0.0 0.0 0.0"/>
+</joint>
+
+
+<joint name="Rigid 1" type="fixed">
+  <origin xyz="-0.015 -0.055 0.003" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_motor_mount_1"/>
+</joint>
+
+<joint name="Rigid 2" type="fixed">
+  <origin xyz="-0.015 0.055 0.003" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_motor_mount__1"/>
+</joint>
+
+<joint name="Rigid 3" type="fixed">
+  <origin xyz="-0.022745 -0.03167 0.013373" rpy="0 0 0"/>
+  <parent link="right_motor_mount_1"/>
+  <child link="right_motor_1"/>
+</joint>
+
+<joint name="Rigid 4" type="fixed">
+  <origin xyz="-0.022745 0.03167 0.013373" rpy="0 0 0"/>
+  <parent link="left_motor_mount__1"/>
+  <child link="left_motor_1"/>
+</joint>
+
+<joint name="Rigid 5" type="fixed">
+  <origin xyz="0.07 0.02 0.003" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="caster_wheel_holder_1"/>
+</joint>
+
+<joint name="Rigid 6" type="fixed">
+  <origin xyz="0.0 -0.04 0.0077" rpy="0 0 0"/>
+  <parent link="caster_wheel_holder_1"/>
+  <child link="caster_wheel_1"/>
+</joint>
+
+<joint name="right_wheel_joint" type="continuous">
+  <origin xyz="0.00775 -0.0215 0.006423" rpy="0 0 0"/>
+  <parent link="right_motor_1"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="left_wheel_joint" type="continuous">
+  <origin xyz="0.00775 0.0215 0.006423" rpy="0 0 0"/>
+  <parent link="left_motor_1"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+</robot>
