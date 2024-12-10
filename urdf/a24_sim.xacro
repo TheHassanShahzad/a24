@@ -4,8 +4,8 @@
 <xacro:include filename="$(find a24)/urdf/materials.xacro" />
 <xacro:include filename="$(find a24)/urdf/a24.gazebo" />
 <xacro:include filename="$(find a24)/urdf/lidar.xacro" />
+<xacro:include filename="$(find a24)/urdf/depth_camera.xacro" />
 <xacro:include filename="$(find a24)/urdf/ros2_control_sim.xacro" />
-
 
 <link name="base_footprint"/>
 

@@ -22,7 +22,7 @@ class CmdVelRemapper(Node):
     def cmd_vel_callback(self, msg):
         # Directly publish the received message to the new topic
         self.publisher.publish(msg)
-        self.get_logger().info('Remapped /cmd_vel to /diff_cont/cmd_vel_unstamped')
+        # self.get_logger().info('Remapped /cmd_vel to /diff_cont/cmd_vel_unstamped')
 
 def main(args=None):
     rclpy.init(args=args)

@@ -49,6 +49,7 @@ setup(
     entry_points={
         'console_scripts': [
             'remapper = a24.remapper:main',
+            'set_initial_pose = a24.nav2_initial_pose:main',
         ],
     },
 )

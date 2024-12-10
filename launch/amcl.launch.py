@@ -12,12 +12,12 @@ def generate_launch_description():
     # Declare launch arguments
     declare_world_arg = DeclareLaunchArgument(
         'world',
-        default_value='basic.world',
+        default_value='home.world',
         description='Name of the world file to load in Gazebo'
     )
     declare_map_arg = DeclareLaunchArgument(
         'map',
-        default_value='basic.yaml',
+        default_value='home.yaml',
         description='Name of the map file to load for navigation'
     )
     
