@@ -29,6 +29,12 @@ setup(
         # Include config files
         (os.path.join('share', package_name, 'config'),
          glob(os.path.join('config', '*'))),
+        # Include map files
+        (os.path.join('share', package_name, 'maps'),
+         glob(os.path.join('maps', '*'))),
+        # Include a24 files
+        (os.path.join('share', package_name, 'a24'),
+         glob(os.path.join('a24', '*'))),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -39,6 +45,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'remapper = a24.remapper:main',
         ],
     },
 )

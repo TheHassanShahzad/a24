@@ -52,7 +52,7 @@ def generate_launch_description():
     diff_drive_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["diff_cont"],
+        arguments=["diff_cont"]
     )
 
     joint_broad_spawner = Node(
@@ -76,5 +76,5 @@ def generate_launch_description():
         spawn_entity,
         diff_drive_spawner,
         joint_broad_spawner,
-        rviz2
+        # rviz2
     ])
