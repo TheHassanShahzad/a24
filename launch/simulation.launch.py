@@ -21,6 +21,10 @@ def generate_launch_description():
     # Use LaunchConfiguration to reference the world file dynamically
     world_name = LaunchConfiguration('world')
     world_file = PathJoinSubstitution([this_dir, 'worlds', world_name])
+
+    gazebo_models_path = os.path.join(this_dir, 'models')
+    os.environ["GAZEBO_MODEL_PATH"] = gazebo_models_path
+
     gazebo_params_file = os.path.join(this_dir, 'gazebo', 'gazebo_params.yaml')
     rviz_config_file = os.path.join(this_dir, 'rviz', 'basic.rviz')
 

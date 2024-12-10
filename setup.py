@@ -35,6 +35,9 @@ setup(
         # Include a24 files
         (os.path.join('share', package_name, 'a24'),
          glob(os.path.join('a24', '*'))),
+        # Include models files
+        (os.path.join('share', package_name, 'models'),
+         glob(os.path.join('models', '*'))),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
