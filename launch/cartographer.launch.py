@@ -1,7 +1,7 @@
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, ExecuteProcess
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, ExecuteProcess
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import PathJoinSubstitution
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.substitutions import FindPackageShare
 from launch_ros.actions import Node
 
@@ -9,6 +9,15 @@ def generate_launch_description():
     # Get package share directories
     pkg_share = FindPackageShare('a24')
     slam_toolbox_share = FindPackageShare('slam_toolbox')
+
+
+    declare_world_arg = DeclareLaunchArgument(
+        'world',
+        default_value='basic.world',
+        description='Name of the world file to load in Gazebo'
+    )
+
+    world_name = LaunchConfiguration('world')
 
     # Launch files and config paths
     simulation_launch = PathJoinSubstitution([pkg_share, 'launch', 'simulation.launch.py'])
@@ -18,7 +27,7 @@ def generate_launch_description():
     # Include simulation launch file
     simulation = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(simulation_launch),
-        launch_arguments={'use_sim_time': 'true'}.items()
+        launch_arguments={'use_sim_time': 'true', 'world': world_name}.items()
     )
 
     # Include SLAM Toolbox launch file with params
@@ -46,6 +55,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
+        declare_world_arg,
         simulation,
         slam,
         rviz

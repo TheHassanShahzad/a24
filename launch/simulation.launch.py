@@ -1,20 +1,26 @@
 import os
-
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
-from launch.substitutions import PathJoinSubstitution, LaunchConfiguration
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
-
 
 def generate_launch_description():
 
     package_name = 'a24'
     this_dir = get_package_share_directory(package_name)
     
-    # File paths
-    world_file = os.path.join(this_dir, 'worlds', 'basic.world')
+    # Declare a launch argument for specifying the world file
+    declare_world_arg = DeclareLaunchArgument(
+        'world',
+        default_value='basic.world',
+        description='Name of the world file to load'
+    )
+
+    # Use LaunchConfiguration to reference the world file dynamically
+    world_name = LaunchConfiguration('world')
+    world_file = PathJoinSubstitution([this_dir, 'worlds', world_name])
     gazebo_params_file = os.path.join(this_dir, 'gazebo', 'gazebo_params.yaml')
     rviz_config_file = os.path.join(this_dir, 'rviz', 'basic.rviz')
 
@@ -71,6 +77,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
+        declare_world_arg,
         rsp,
         gazebo,
         spawn_entity,

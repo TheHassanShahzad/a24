@@ -2,7 +2,8 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.substitutions import LaunchConfiguration
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 
@@ -19,6 +20,22 @@ def generate_launch_description():
     nav2_bringup_dir = get_package_share_directory('nav2_bringup')
     nav2_launch_file = os.path.join(nav2_bringup_dir, 'launch', 'navigation_launch.py')
 
+    # Declare launch arguments for world and map
+    declare_world_arg = DeclareLaunchArgument(
+        'world',
+        default_value='basic.world',
+        description='Name of the world file to load'
+    )
+    declare_map_arg = DeclareLaunchArgument(
+        'map',
+        default_value='basic.yaml',
+        description='Name of the map file to load'
+    )
+
+    # Use LaunchConfiguration to get the arguments
+    world_name = LaunchConfiguration('world')
+    map_name = LaunchConfiguration('map')
+
     # Define the remapper node
     remapper_node = Node(
         package='a24',
@@ -27,11 +44,13 @@ def generate_launch_description():
         output='screen'
     )
 
-    # Include the AMCL launch file
+    # Include the AMCL launch file and pass the world and map arguments
     amcl_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(amcl_launch_file),
-        # If your amcl.launch.py expects arguments, you can supply them here
-        launch_arguments={}
+        launch_arguments={
+            'world': world_name,
+            'map': map_name
+        }.items()
     )
 
     # Include the Nav2 navigation launch file
@@ -45,6 +64,8 @@ def generate_launch_description():
 
     # Return the LaunchDescription composed of all actions
     return LaunchDescription([
+        declare_world_arg,
+        declare_map_arg,
         remapper_node,
         amcl_launch,
         nav2_launch
