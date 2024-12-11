@@ -38,6 +38,10 @@ setup(
         # Include models files
         (os.path.join('share', package_name, 'models'),
          glob(os.path.join('models', '*'))),
+        # Include images files
+        (os.path.join('share', package_name, 'images'),
+         glob(os.path.join('images', '*'))),
+
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -50,6 +54,10 @@ setup(
         'console_scripts': [
             'remapper = a24.remapper:main',
             'set_initial_pose = a24.nav2_initial_pose:main',
+            'go_to_goal = a24.go_to_goal:main',
+            'is_occupied = a24.isOccupied:main',
+            'take_image = a24.take_image:main',
+            'coord_2_depth = a24.coord_2_depth:main'
         ],
     },
 )

@@ -44,6 +44,19 @@ def generate_launch_description():
         output='screen'
     )
 
+    is_occupied_service = Node(
+        package='a24',
+        executable='is_occupied',
+        name='is_occupied',
+        output='screen'
+    )
+
+    coord_2_depth_service = Node(
+        package='a24',
+        executable='coord_2_depth',
+        name='coord_2_depth',
+        output='screen'
+    )
     # Include the AMCL launch file and pass the world and map arguments
     amcl_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(amcl_launch_file),
@@ -53,6 +66,13 @@ def generate_launch_description():
         }.items()
     )
 
+    take_image_node = Node(
+        package='a24',
+        executable='take_image',
+        name='take_image',
+        output='screen'
+    )
+    
     # Include the Nav2 navigation launch file
     nav2_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(nav2_launch_file),
@@ -62,11 +82,30 @@ def generate_launch_description():
         }.items()
     )
 
+    set_initial_pose_node = Node(
+        package='a24',
+        executable='set_initial_pose',
+        name='set_initial_pose',
+        output='screen'
+    )
+
+    go_to_goal_node = Node(
+        package='a24',
+        executable='go_to_goal',
+        name='go_to_goal',
+        output='screen'
+    )
+
     # Return the LaunchDescription composed of all actions
     return LaunchDescription([
         declare_world_arg,
         declare_map_arg,
         remapper_node,
+        is_occupied_service,
+        coord_2_depth_service,
+        take_image_node,
         amcl_launch,
-        nav2_launch
+        nav2_launch,
+        set_initial_pose_node,
+        go_to_goal_node
     ])
